@@ -1,47 +1,38 @@
 
-function compareNumeric(a, b) {
-  if (a > b) return 1;
-  if (a < b) return -1;
-}
 
-let height = [7, 0, 1, 3, 4, 1, 2, 1];
-let water = 0;
+var arr1 = [2, 1, 5];
+var arr2 = [5, 0, 3, 4, 7];
+var arr3 = [7, 2, 3, 1, 0];
+var water1 = 0
+var water2 = 0
+var water3 = 0
 
-height.sort(compareNumeric);
+if (arr1[0] > arr1[1] || arr1[2] > arr1[1] || arr1[2] > arr1[0]) {
+   water1 = arr1[0] - arr1[1];
+  console.log(water1)
+} else if (arr1[2] < arr1[0]) {
+  arr1.reverse()
+   water1 = arr1[0] - arr1[1]
+  console.log(water1)
+}
+if (arr2[0] > arr2[1] || arr2[2] > arr2[1]  || arr2[3] > arr2[2] || arr2[4] > arr2[0]) {
+   water2 = arr2[0] - arr2[1] + arr2[0] - arr2[2] + arr2[0] - arr2[3]
+  console.log(water2)
+} else if (arr2[4] < arr2[0]) {
+  arr1.reverse()
+   water2 = arr2[0] - arr2[1] + arr2[0] - arr2[2] + arr2[0] - arr2[3]
+  console.log(water2)
+}
+arr3.splice(4,4)
+ if (arr3[0] > arr3[1] || arr3[2] > arr3[1] || arr3[0] > arr3[2] || arr3[0] > arr3[3]) {
+   water3 = arr3[0] - arr3[1] - arr3[2] - arr3[3]
 
-if (height[0] >= height[1] || height[0] <= height[1]) {
-  let water = 1
-  console.log(water)
+  console.log(water3);
+} else if (arr3[0] < arr3[3]) {
+  arr3.reverse();
+   water3 = arr3[0] - arr3[1] - arr3[2] - arr3[3];
+
+  console.log(water3);
 }
-if (height[2] >= height[1] || height[2] <= height[1]) {
-  let water = 3
-  console.log(water)
-}
-if (height[2] >= height[3] || height[2] <= height[3]) {
-  let water = 4
-console.log(water)
-}
-if (height[3] >= height[4] || height[3] <= height[4]) {
-  let water = 5
-  console.log(water)
-}
-if (height[4] >= height[5] || height[4] <= height[5]) {
-  let water = 5
-  console.log(water)
-}
-if (height[5] >= height[6] || height[5] <= height[6]) {
-  let water = 7
-  console.log(water)
-}
-if (height[6] >= height[7] || height[6] <= height[7]) {
-  let water = 9
-  console.log(water)
-}
-/*if (height[7] >= height[8] || height[7] <= height[8]) {
-  let water = 16
-  console.log(water)
-}
-if (height[8] >= height[9] || height[8] <= height[9]) {
-  let water = 17
-  console.log(water)
-}
+var sum = water1 + water2 + water3;
+console.log(sum);
