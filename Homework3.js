@@ -41,5 +41,5 @@ arrayManipulation(arr) // why it return prototype object?
 
 arrayManipulation(function (max, min, sum) {
     // эта анонимная функция выполнится после вызова callback-функции
-    console.log("callback called! " + arrayManipulation);
+    console.log("callback called! " + arrayManipulation); // but it has write in console the array.find not a function?
 });
