@@ -46,36 +46,32 @@ arrayManipulation(arr)
 
 
 
-arrayManipulation(function (max, min, sum) {
-    // эта анонимная функция выполнится после вызова callback-функции
-    console.log("callback called! " + arrayManipulation(arr)); // Но оно пишет что array.find not a function
-});
+console.log('main console', arrayManipulation(arr))
+
+console.log('last console', (function (cb) {
+	return cb()
+})(arrayManipulation)) // Uncaught TypeError: Cannot read property 'find' of undefined
 
 
 
 // 3)
 
- let arr2 = [1, 5, 3, 8, 5, 4, 2, 5];
-   function fromArrToObj() {
+let arr2 = [1, 5, 3, 8, 5, 4, 2, 5];
+  function fromArrToObj() {
 
-    let obj2 = new Object(arr2);
+   let obj2 = new Object(arr2);
 
 
 
- obj2["1"] = arr2.forEach(function(item, i, arr) {
-console.log( i + ": " + item + " (массив:" + arr2 + ")" );
+obj2["1"] = arr2.forEach(function(item, i, arr) {
+console.log( i + ": " + item + " (массив: " + arr2 + ")" );
 });
 
-    let obj3 = new Object();
-    let i =  arr2.filter(function(number) {
-    return number > 0;
-    });
-    obj3["2"] = obj2
-console.log(Object.keys(obj3));
+   let i =  arr2.indexOf(obj2["1"]);
+console.log(Object.keys(obj2));
 
-    return {
-      obj2,
-      obj3
-    }
-       }
-   fromArrToObj(arr2)
+   return {
+     obj2
+   }
+      }
+  fromArrToObj(arr2) 
