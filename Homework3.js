@@ -49,8 +49,8 @@ arrayManipulation(arr)
 console.log('main console', arrayManipulation(arr))
 
 console.log('last console', (function (cb) {
-	return cb()
-})(arrayManipulation)) // Uncaught TypeError: Cannot read property 'find' of undefined
+	return cb
+})(arrayManipulation(arr)))
 
 
 
@@ -74,4 +74,4 @@ console.log(Object.keys(obj2));
      obj2
    }
       }
-  fromArrToObj(arr2) 
+  fromArrToObj(arr2)
