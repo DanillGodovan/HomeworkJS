@@ -1,5 +1,7 @@
 //1) подзадание
 
+//1) подзадание
+
 let arr = [2, 1, 5, 0, 3, 4, 7, 2, 3, 1, 0]
  function arrayManipulation (array) {
 	let min = max = array.find(function (item) {
