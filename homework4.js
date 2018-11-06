@@ -12,16 +12,27 @@ forEach(arr) // перелистывает весь маассив
 
  // 2) myMap
 
-  function myMap (array, callback) {
-    var returnvalue = []
-    for (var i = 0; i < array.length;  i++) {
-        var newElements = callback(array[i], i, array)
-        returnValue.push(newElements)
-    }
-    return returnValue
-  }
+ Array.prototype.myMap = function(callback) {
+   arr = [];
+   for (var i = 0; i < this.length; i++)
+       arr.push(callback(this[i], i, this));
+   return arr;
+};
 
-  myMap(arr)
+//tests
+var arrs = ['math', 'is', 'so', 'cool'];
+var numbers2 = [1, 4, 9];
+
+var goodT = arrs.myMap(function(n) {
+   return n;
+});
+
+var squareRoot = numbers2.myMap(function(num) {
+   return Math.sqrt(num);
+});
+
+console.log(goodMath); // ['math', 'is', 'so', 'cool']
+console.log(squareRoot); // [1, 2 ,3]
 
   // 3) mySort
 
