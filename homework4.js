@@ -23,7 +23,7 @@ forEach(arr) // перелистывает весь маассив
 var arrs = ['math', 'is', 'so', 'cool'];
 var numbers2 = [1, 4, 9];
 
-var goodT = arrs.myMap(function(n) {
+var goodMath = arrs.myMap(function(n) {
    return n;
 });
 
