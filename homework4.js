@@ -4,11 +4,13 @@
 
  function forEach(array, callback) {
    for (var i = 0; i < arr.length; i++) {
-            console.log(arr[i]);
+            callback(this[i], i, this);
         }
  }
 
-forEach(arr) // перелистывает весь маассив
+ arr.myEach(function(word) {
+     console.log(word);
+ }); // перелистывает весь маассив
 
  // 2) myMap
 
