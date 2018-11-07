@@ -8,7 +8,7 @@
         }
  }
 
- arr.myEach(function(word) {
+ arr.forEach(function(word) {
      console.log(word);
  }); // перелистывает весь маассив
 
