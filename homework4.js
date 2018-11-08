@@ -2,11 +2,10 @@
 
   let arr = [1, 5, 4, 2, 6]
 
- function forEach(array, callback) {
-   for (var i = 0; i < arr.length; i++) {
-            callback(this[i], i, this);
-        }
- }
+  Array.prototype.myEach = function(callback) {
+     for (var i = 0; i < this.length; i++)
+         callback(this[i], i, this);
+ };
 
  arr.forEach(function(word) {
      console.log(word);
@@ -50,4 +49,4 @@ console.log(squareRoot); // [1, 2 ,3]
     }
 return arr;
 }     // сортировка по порядку
- msort(arr)
+ arr.apply(msort())
