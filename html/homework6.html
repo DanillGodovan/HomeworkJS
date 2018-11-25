@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Todo list</title>
+    <script src="index.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+</head>
+<body onload="onLoadFunct()">
+<div id="wrapper">
+    <h1>Todo-List</h1>
+    <form id="form">
+        <input type="text" id="item" name="Todos type here"/>
+        <input type="submit" value="save" id="submit" class="btn">
+        <div>
+            <input id="all" type="button" value="All" class="btn">
+            <input id="checked" type="button" value="done" class="btn">
+            <input id="unchecked" type="button" value="undone" class="btn">
+            <div id="sum"></div>
+            <ul id="list"></ul>
+            <ul id="select"></ul>
+            <ul id="unselected"></ul>
+        </div>
+    </form>
+</div>
+</body>
+</html>
