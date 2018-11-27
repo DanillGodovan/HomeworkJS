@@ -14,7 +14,7 @@ function onLoadFunct() {
             //create item in list
             var el = document.createElement('li')
             el.id = n
-            var del = '<i class="del material-icons" onclick="Del(' + n + ')">close</i>'
+            var del = '<i class="del material-icons" onclick="Del(' + n + ')"> close(click for close)</i>'
             //check if input empty -> ignore
             var value = document.getElementById('item').value
             if (value.replace(/ /g, '')) {
@@ -109,5 +109,5 @@ function Check() {
             item += 1
         }
     }
-    document.getElementById('sum').innerHTML = 'need to buy ' + item + ' items '
+    document.getElementById('sum').innerHTML = 'need to do ' + item + ' items '
 }
