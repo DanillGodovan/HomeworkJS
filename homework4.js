@@ -38,12 +38,12 @@ console.log(squareRoot); // [1, 2 ,3]
   // 3) mySort
 
        // сортировка по порядку
- arr.forEach(function (a, b) {
-   if (a > b) {
-     return 1
-   }
-  if (a <= b) {
-    return -1
-  }
-});
-console.log(arr)
+       Array.prototype.mySort = function(composer) {
+       		let output = this.slice(0);
+       		while (true) {
+       			for (var i = 0; i < output.length; i++) {
+
+       			}
+       		}
+       	};
+       	console.log(" ".codePointAt(0));

@@ -1,113 +1,157 @@
-function onLoadFunct() {
-    //event for button submit
-    var form = document.getElementById('form')
-    var n = 0 //variable for assign an id
-    const allItem = document.getElementById('list')
-    const selectedList = document.getElementById('select')
-    const unselectedList = document.getElementById('unselected')
-    var liList = document.getElementsByTagName('li')
-    if (form) {
-        form.addEventListener('submit', function (event) {
-            event.preventDefault()
-            event.stopPropagation()
-            n += 1
-            //create item in list
-            var el = document.createElement('li')
-            el.id = n
-            var del = '<i class="del material-icons" onclick="Del(' + n + ')"> close(click for close)</i>'
-            //check if input empty -> ignore
-            var value = document.getElementById('item').value
-            if (value.replace(/ /g, '')) {
-                el.innerHTML = '<input type="checkbox" onchange="Check()" id="item' + n + '"><label for="item' + n +'">' + value + '</label>' + del
-                list.insertBefore(el, list.childNodes[0])
-            }
-            //reset input
-            document.getElementById('item').value = ''
-            Check()
-        }, false)
-    }
-    //event for button all
-    var all = document.getElementById('all')
-    if (all) {
-        all.addEventListener('click', function (event) {
-            event.stopPropagation()
-            Array.prototype.forEach.call(liList, function () {
-                for (var i = 0; i < liList.length; i++) {
-                    allItem.appendChild(liList[i])
-                }
-            }, false)
-            allItem.style.display = 'block'
-            selectedList.style.display = 'none'
-            unselectedList.style.display = 'none'
-        })
-    }
-    //event for button checked
-    var checked = document.getElementById('checked')
-    if (checked) {
-        checked.addEventListener('click', function (event) {
-            event.stopPropagation()
-            Array.prototype.forEach.call(liList, function () {
-                //find selected element
-                for (i = 0; i < liList.length; i++) {
-                    if (liList[i].querySelector('input').checked) {
-                        selectedList.appendChild(liList[i])
-                    }
-                }
-                //find unselected element in select
-                el = selectedList.getElementsByTagName('li')
-                for (i = 0; i < el.length; i++) {
-                    if (el[i].querySelector('input').checked === false) {
-                        unselectedList.appendChild(el[i])
-                    }
-                }
-            }, false)
-            selectedList.style.display = 'block'
-            allItem.style.display = 'none'
-            unselectedList.style.display = 'none'
-        })
-    }
-    //event for button unchecked
-    var unchecked = document.getElementById('unchecked')
-    if (unchecked) {
-        unchecked.addEventListener('click', function (event) {
-            event.stopPropagation()
-            Array.prototype.forEach.call(liList, function () {
-                //find unselected element
-                for (i = 0; i < liList.length; i++) {
-                    if (liList[i].querySelector('input').checked === false) {
-                        unselectedList.appendChild(liList[i])
-                    }
-                }
-                //find selected element in unselected
-                el = unselectedList.getElementsByTagName('li')
-                for (i = 0; i < el.length; i++) {
-                    if (el[i].querySelector('input').checked) {
-                        selectedList.appendChild(el[i])
-                    }
-                }
-            }, false)
-            unselectedList.style.display = 'block'
-            allItem.style.display = 'none'
-            selectedList.style.display = 'none'
-        })
-    }
+let input = document.getElementById("input");
+let submit = document.getElementById("submit");
+let list = document.getElementById("list");
+let div = document.getElementById("ToDoList");
+
+let pencil = String.fromCharCode("9999");
+let deleteMark = String.fromCharCode("10006");
+let checkMark = String.fromCharCode("10003"); // ✓
+
+div.addEventListener("click", onSubmit);
+input.addEventListener("keypress", onSubmit);
+list.addEventListener("click", transform);
+list.addEventListener("keypress", transform);
+
+if (typeof window.localStorage === 'undefined')
+	alert("Sorry, your Todo-list doesn't save");
+else if (localStorage.getItem("list") !== null) {
+	let StorageList = JSON.parse(localStorage.getItem("list"));
+
+	for (var i = 0; i < StorageList.length; i++) {
+		addLi(StorageList[i]);
+	}
 }
 
-//delete item
-function Del(id) {
-    var el = document.getElementById(id)
-    el.parentNode.removeChild(el)
-    Check()
+function onSubmit(elem) {
+	if (elem.key === "Enter" || elem.target.id === "submit") {
+		if (StringEmpty(input.value))
+			alert("Please, write anything");
+		else {
+			addLi();
+			updateLocalStorage();
+		}
+	}
+}
+function makeCounter() {
+  var currentCount = 1;
+
+  return function() {
+    return currentCount++;
+  };
 }
 
-//sum unchecked item
-function Check() {
-    var el = document.getElementsByTagName('li')
-    var item = 0
-    for (var i = 0; i < el.length; i++) {
-        if (el[i].querySelector('input').checked === false) {
-            item += 1
-        }
-    }
-    document.getElementById('sum').innerHTML = 'need to do ' + item + ' items '
+var counter = makeCounter();
+
+function addLi(inputValue) {
+	let inputString = input.value;
+	if (inputValue === undefined) {
+		inputValue = {str: inputString, checked: false};
+	}
+
+	let li = document.createElement("li");
+	let checker = document.createElement("input");
+	let p = document.createElement("p");
+	let correct = document.createElement("input");
+	let del = document.createElement("input");
+
+	p.className = "liPara";
+	p.innerHTML = inputValue.str;
+ li.innerHTML = counter();
+	checker.className = "checker";
+	checker.type = "checkbox"
+	checker.checked = inputValue.checked;
+
+	correct.type = "button"
+	correct.className = "correct";
+	correct.value = pencil;
+
+	del.type = "button"
+	del.className = "delete";
+	del.value = deleteMark;
+
+	li.appendChild(checker);
+	li.appendChild(p);
+	li.appendChild(correct);
+	li.appendChild(del);
+
+	input.value = "" ;
+	list.appendChild(li);
 }
+
+function transform(elem) {
+	if (elem.target.className === "correct") {
+		correct(elem);
+		updateLocalStorage();
+	} else if (elem.target.className === "append" || elem.key === "Enter") {
+		append(elem);
+		updateLocalStorage();
+	} else if (elem.target.className === "checker") {
+		highlight(elem);
+		updateLocalStorage();
+	} else if (elem.target.className === "delete") {
+		list.removeChild(elem.target.parentElement);
+		updateLocalStorage();
+	}
+}
+
+function correct(elem) {
+	let parent = elem.target.parentElement;
+	let input = document.createElement("input");
+
+	input.type = "text";
+	input.className = "correctInput";
+	input.value = parent.querySelector("p").innerHTML;
+
+	elem.target.className = "append";
+	elem.target.value = checkMark;
+
+	parent.querySelector("p").innerHTML = "";
+	parent.querySelector("p").appendChild(input);
+	input.focus();
+}
+
+function append(elem) {
+	let parent = elem.key === "Enter" ?
+	elem.target.parentElement.parentElement :
+	elem.target.parentElement;
+
+	parent.querySelector("p").innerHTML = parent.querySelector("p").firstChild.value;
+
+	parent.querySelector(".append").value = pencil;
+	parent.querySelector(".append").className = "correct";
+}
+
+function highlight(elem) {
+	let parent = elem.target.parentElement;
+
+	if (elem.target.checked === true)
+		parent.querySelector("p").style = "text-decoration: line-through";
+	else
+		parent.querySelector("p").style = "text-decoration: none";
+}
+
+function updateLocalStorage() {
+	if (typeof window.localStorage === 'undefined')
+		return;
+
+	let chList = list.children;
+	let output = [];
+
+	for (let i = 0; i < chList.length; i++) {
+		output.push({str: chList[i].querySelector(".liPara").innerHTML,
+					checked: chList[i].querySelector(".checker").checked});
+	}
+
+	localStorage.setItem("list", JSON.stringify(output))
+}
+
+function StringEmpty(string) {
+	if (string !== null && typeof string !== "undefined")
+		string = string.trim();
+
+	if (!string)
+		return true;
+	else
+		return false
+}
+setTimeout(addLi, 4000)
