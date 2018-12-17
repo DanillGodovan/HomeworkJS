@@ -63,30 +63,81 @@
  .reta9 {
    text-decoration: underline;
  }
-#p_prldr{
-   position: fixed; left: 0; top: 0; right:0; bottom:0; background: #9A12B3; z-index: 30;
-   }
-   .contpre small{
-     font-size:25px;
-     }
-     .contpre{
-        width: 250px;
-         height: 100px;
-          position: absolute;
-           left: 50%;top: 48%;
-            margin-left:-125px;
-             margin-top:-75px;
-             color:#fff;
-              font-size:40px;
-               letter-spacing:-2px;
-                text-align:center;
-                 line-height:35px;
-               }
-                 #p_prldr .svg_anm {
-                    position: absolute;
-                     width: 200px;
-                     height: 200px;
-                      background: url(images/spinning-circles.svg) center center no-repeat;
-                      background-size:200px;
+ body {
+     margin: 0 auto;
+     padding: 20px;
+     max-width: 1200px;
+     overflow-y: scroll;
+     font-family: 'Open Sans',sans-serif;
+     font-weight: 400;
+     color: #777;
+     background-color: #f7f7f7;
+     -webkit-font-smoothing: antialiased;
+     -webkit-text-size-adjust: 100%;
+     -ms-text-size-adjust: 100%;
+ }
+ .preloader {
+   height: 100%;
+   width: 100%;
+   background: #fff;
+   position: fixed;
+   left: 0;
+   top: 0;
+   z-index: 10000;
+   perspective: 1600px;
+   perspective-origin: 20% 50%;
+   transition: 0.5s all;
+   opacity: 1;
+ }
 
-                    }
+ .spinner {
+   width: 80px;
+   height: 80px;
+   border: 2px solid #f3f3f3;
+   border-top: 3px solid #0088cf;
+   border-radius: 100%;
+   position: absolute;
+   top: 0;
+   bottom: 0;
+   left: 0;
+   right: 0;
+   margin: auto;
+   animation: spin 1s infinite linear;
+ }
+
+ .preloader.fade {
+   opacity: 0;
+ }
+
+ .b-ico-preloader {
+   background: url(http://weblaboratory.in.ua/wp-content/themes/graphy/images/new_logo.svg);
+   background-size: cover;
+   width: 52px;
+   height: 67px;
+   position: absolute;
+   top: 0;
+   bottom: 0;
+   left: 0;
+   right: 0;
+   margin: auto;
+   animation: ico 5s infinite linear;
+   transform-style: preserve-3d;
+ }
+
+ @keyframes spin {
+   from {
+     transform: rotate(0deg);
+   }
+   to {
+     transform: rotate(360deg);
+   }
+ }
+
+ @keyframes ico {
+   from {
+     transform: rotateY(0deg);
+   }
+   to {
+     transform: rotateY(360deg);
+   }
+ }
