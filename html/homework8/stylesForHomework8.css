@@ -1,0 +1,92 @@
+ .first {
+   align-content: center;
+   font-size: 150%;
+   font-weight: bold;
+ }
+ .second {
+   align: center;
+ }
+ .third {
+   align: center;
+ }
+ .fourth {
+   align: center;
+ }
+ .fifth {
+   align: center;
+ }
+ .sixth {
+   align: center;
+ }
+ .seventh {
+   align: center;
+ }
+ .eighth {
+   align: center;
+ }
+ .nineth {
+   align: center;
+ }
+ .tenth {
+   align: center;
+ }
+ .eleventh {
+   align: center;
+ }
+ .reta {
+   text-decoration: underline;
+ }
+ .reta1 {
+   text-decoration: underline;
+ }
+ .reta2 {
+   text-decoration: underline;
+ }
+ .reta3 {
+   text-decoration: underline;
+ }
+ .reta4 {
+   text-decoration: underline;
+ }
+ .reta5 {
+   text-decoration: underline;
+ }
+ .reta6 {
+   text-decoration: underline;
+ }
+ .reta7 {
+   text-decoration: underline;
+ }
+ .reta8 {
+   text-decoration: underline;
+ }
+ .reta9 {
+   text-decoration: underline;
+ }
+#p_prldr{
+   position: fixed; left: 0; top: 0; right:0; bottom:0; background: #9A12B3; z-index: 30;
+   }
+   .contpre small{
+     font-size:25px;
+     }
+     .contpre{
+        width: 250px;
+         height: 100px;
+          position: absolute;
+           left: 50%;top: 48%;
+            margin-left:-125px;
+             margin-top:-75px;
+             color:#fff;
+              font-size:40px;
+               letter-spacing:-2px;
+                text-align:center;
+                 line-height:35px;
+               }
+                 #p_prldr .svg_anm {
+                    position: absolute;
+                     width: 200px;
+                     height: 200px;
+                      background: url(images/spinning-circles.svg) center center no-repeat;
+                      background-size:200px;
+
+                    }
