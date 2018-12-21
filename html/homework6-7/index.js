@@ -56,7 +56,7 @@ function addLi(inputValue) {
 
 	p.className = "liPara";
 	p.innerHTML = inputValue.str;
- li.innerHTML = counter();
+  li.innerHTML = counter();
 	checker.className = "checker";
 	checker.type = "checkbox"
 	checker.checked = inputValue.checked;
