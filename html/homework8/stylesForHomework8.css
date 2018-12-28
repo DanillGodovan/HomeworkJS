@@ -109,8 +109,7 @@
    opacity: 0;
  }
 
- .b-ico-preloader {
-   background: url(http://weblaboratory.in.ua/wp-content/themes/graphy/images/new_logo.svg);
+ .b-ico-preloader {}
    background-size: cover;
    width: 52px;
    height: 67px;
