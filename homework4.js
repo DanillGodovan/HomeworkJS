@@ -38,12 +38,18 @@ console.log(squareRoot); // [1, 2 ,3]
   // 3) mySort
 
        // сортировка по порядку
-       Array.prototype.mySort = function(composer) {
-       		let output = this.slice(0);
-       		while (true) {
-       			for (var i = 0; i < output.length; i++) {
+       var arr3 = [3, 7, 1, 5, 8]
+       Array.prototype.mySort = function(callback) {
+       for (var i = 0, endI = this.length - 1; i < endI; i++) {
+        for (var j = 0, endJ = endI - i; j < endJ; j++) {
+            if (this[j] > this[j + 1]) {
+                var swap = this[j];
+                this[j] = this[j + 1];
+                this[j + 1] = swap;
+                callback(this[i], this[j], i, j, this)
+                          }
+        }
+    }
 
-       			}
-       		}
-       	};
-       	console.log(" ".codePointAt(0));
+]
+       var arr2 = arr3.mySort()
