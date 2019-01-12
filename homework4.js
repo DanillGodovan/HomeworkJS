@@ -39,17 +39,24 @@ console.log(squareRoot); // [1, 2 ,3]
 
        // сортировка по порядку
        var arr3 = [3, 7, 1, 5, 8]
-       Array.prototype.mySort = function(callback) {
-       for (var i = 0, endI = this.length - 1; i < endI; i++) {
-        for (var j = 0, endJ = endI - i; j < endJ; j++) {
-            if (this[j] > this[j + 1]) {
-                var swap = this[j];
-                this[j] = this[j + 1];
-                this[j + 1] = swap;
-                callback(this[i], this[j], i, j, this)
-                          }
-        }
-    }
+       Array.prototype.mySort = function()
+       {
+       var is_sorted = false;
+        while (!is_sorted)
+        {
+           is_sorted = true;
+           for (var n = 0; n < this.length - 1; n++)
+           {
+             if (this[n] > this[n+1]){
+               var x = this[n+1];
+               this[n+1] = this[n];
+               this[n] = x;
+               is_sorted = false;
+             }
+           }
+         }
+         return this;
+       };
 
-]
-       var arr2 = arr3.mySort()
+ let arr2 = arr3.mySort()
+console.log(arr2)
